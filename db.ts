@@ -13,11 +13,11 @@ const {
 
 // Create a new pool instance
 const pool = new Pool({
-    connectionString: DATABASE_URL,
-    user: DATABASE_USERNAME,
-    password: DATABASE_PASSWORD,
-    port: parseInt(DATABASE_PORT || '5432'),
-    database: DATABASE
+    host: 'cos30049.cnmmc8wmy9ar.us-east-1.rds.amazonaws.com',
+    user: 'superuser',
+    password: '1234rewqasdF',
+    port: 5432,
+    database: 'cos30049'
 });
 
 export default pool;
