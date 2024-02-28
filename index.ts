@@ -12,11 +12,11 @@ import { Request, Response } from 'express';
 app.use(cors({origin: ['http://192.168.1.117:3000', 'http://localhost:3000'],credentials: true }));
 
 const client = new Client({
-    host: 'cos30049.cnmmc8wmy9ar.us-east-1.rds.amazonaws.com',
-    user: 'superuser',
-    port: 5432,
-    password: '1234rewqasdF',
-    database: 'cos30049',
+    host: process.env.DATABASE_URL,
+    user: process.env.DATABASE_USERNAME,
+    port: parseInt(process.env.DATABASE_PORT as string),
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE,
     ssl: {
         rejectUnauthorized: false
     }
