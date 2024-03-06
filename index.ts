@@ -28,7 +28,10 @@ app.get('/users', (req: Request, res: Response) => {
     client.query('SELECT * FROM users', (err, result) => {
         if (!err) {
             console.log(result.rows);
-            res.status(200).json(result.rows); // Sending the rows as JSON response
+            res.status(200).json({
+                data: result.rows,
+                success: true
+            });
         } else {
             console.error(err.message);
             res.status(500).send('Internal Server Error'); // Sending an error response
