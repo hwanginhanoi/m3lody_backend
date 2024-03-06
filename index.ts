@@ -9,7 +9,7 @@ import {Client} from "pg";
 app.use(express.json());
 // app.use(cors({origin: "*"}));
 import { Request, Response } from 'express';
-app.use(cors({origin: ['http://192.168.1.117:3000', 'http://localhost:3000'],credentials: true }));
+app.use(cors());
 
 const client = new Client({
     host: process.env.DATABASE_URL,
@@ -37,5 +37,5 @@ app.get('/users', (req: Request, res: Response) => {
 });
 
 
-let PORT:number = 3000;
+let PORT:number = 3001;
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
