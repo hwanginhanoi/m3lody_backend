@@ -8,7 +8,7 @@ CREATE TABLE collections (
 
 CREATE TABLE accounts (
    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-   user_name TEXT,
+   username TEXT,
    address TEXT UNIQUE NOT NULL,
    details JSONB
 );
@@ -32,13 +32,9 @@ CREATE TABLE nft_sales (
    collection_id BIGINT REFERENCES collections (id),
    auction_type auction,
    contract_address TEXT,
-   quantity NUMERIC,
-   payment_symbol TEXT,
-   total_price DOUBLE PRECISION,
-   seller_account BIGINT REFERENCES accounts (id),
+   price DOUBLE PRECISION,
    from_account BIGINT REFERENCES accounts (id),
    to_account BIGINT REFERENCES accounts (id),
-   winner_account BIGINT REFERENCES accounts (id),
    CONSTRAINT id_time_unique UNIQUE (id, time)
 );
 
