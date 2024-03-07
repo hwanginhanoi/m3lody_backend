@@ -30,7 +30,6 @@ CREATE TABLE nft_sales (
    "time" TIMESTAMP WITH TIME ZONE,
    asset_id BIGINT REFERENCES assets (id),
    collection_id BIGINT REFERENCES collections (id),
-   auction_type auction,
    contract_address TEXT,
    price DOUBLE PRECISION,
    from_account BIGINT REFERENCES accounts (id),
