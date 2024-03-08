@@ -25,7 +25,7 @@ const client = new Client({
 // Define a route to fetch users
 client.connect();
 app.get('/users', (req: Request, res: Response) => {
-    client.query('SELECT * FROM users', (err, result) => {
+    client.query('SELECT * FROM accounts', (err, result) => {
         if (!err) {
             console.log(result.rows);
             res.status(200).json({
