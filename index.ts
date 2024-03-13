@@ -5,23 +5,18 @@ const cors = require('cors');
 const app = express();
 import pool from './db'
 import {Client} from "pg";
-
+import {Network, Alchemy, Utils, BigNumber} from 'alchemy-sdk';
 app.use(express.json());
 // app.use(cors({origin: "*"}));
 import { Request, Response } from 'express';
 app.use(cors());
 
-const client = new Client({
-    host: process.env.DATABASE_URL,
-    user: process.env.DATABASE_USERNAME,
-    port: parseInt(process.env.DATABASE_PORT as string),
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE,
-    ssl: {
-        rejectUnauthorized: false
-    }
-})
+const settings = {
+    apiKey: "cB-jqW7qNhmG-fbEvH2BT3gvwe1prbHZ",
+    network: Network.ETH_SEPOLIA,
+};
 
+<<<<<<< Updated upstream
 // Define a route to fetch users
 client.connect();
 app.get('/users', (req: Request, res: Response) => {
@@ -38,6 +33,19 @@ app.get('/users', (req: Request, res: Response) => {
         }
     });
 });
+=======
+const alchemy = new Alchemy(settings);
+
+let balance;
+let hex: string | undefined;
+balance = alchemy.core
+    .getBalance('0xF6953544A402CD2AFb3045d1d7e8a21eF58bCE7f')
+    .then(balance =>{
+        hex = balance._hex;
+        let balanceInETH = (parseInt(hex as string) / 100 ** 9).toFixed(5) + " ETH";
+        console.log(balanceInETH);
+    })
+>>>>>>> Stashed changes
 
 
 let PORT:number = 3001;
