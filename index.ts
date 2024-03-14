@@ -16,24 +16,6 @@ const settings = {
     network: Network.ETH_SEPOLIA,
 };
 
-<<<<<<< Updated upstream
-// Define a route to fetch users
-client.connect();
-app.get('/users', (req: Request, res: Response) => {
-    client.query('SELECT * FROM accounts', (err, result) => {
-        if (!err) {
-            console.log(result.rows);
-            res.status(200).json({
-                data: result.rows,
-                success: true
-            });
-        } else {
-            console.error(err.message);
-            res.status(500).send('Internal Server Error'); // Sending an error response
-        }
-    });
-});
-=======
 const alchemy = new Alchemy(settings);
 
 let balance;
@@ -45,7 +27,6 @@ balance = alchemy.core
         let balanceInETH = (parseInt(hex as string) / 100 ** 9).toFixed(5) + " ETH";
         console.log(balanceInETH);
     })
->>>>>>> Stashed changes
 
 
 let PORT:number = 3001;

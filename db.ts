@@ -17,7 +17,8 @@ const pool = new Pool({
     user: 'superuser',
     password: '1234rewqasdF',
     port: 5432,
-    database: 'cos30049'
+    database: 'cos30049',
+    ssl: { rejectUnauthorized: false }
 });
 
 export default pool;
