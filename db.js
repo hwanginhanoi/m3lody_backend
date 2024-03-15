@@ -1,6 +1,7 @@
-let { Pool } = require("pg");
-
-const dotenv = require("dotenv");
+import * as dotenv from 'dotenv';
+dotenv.config();
+import pg from 'pg';
+const { Pool } = pg;
 
 dotenv.config();
 
@@ -37,4 +38,4 @@ function pools(query, res) {
     });
 }
 
-module.exports = pool;
+export default pool;

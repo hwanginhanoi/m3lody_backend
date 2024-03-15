@@ -1,41 +1,39 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-let pool = require('./db');
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+// import indexRouter from './routes/index';
+// import usersRouter from './routes/users';
+import transactionsRouter from './routes/transactions.js';
+import registerRouter from './routes/register.js';
+import cors from 'cors';
+import session from 'express-session';
+const app = express();
+app.use(cors());
+
+app.use(session({
+    secret: 'secret',
+    cookie: { maxAge: 60000000 },
+    saveUninitialized: false
+})
+);
 
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
-
-// app.get('/hello', (req, res) => {
-//     pool.query('SELECT * FROM accounts', (err, result) => {
-//         if (!err) {
-//             console.log(result.rows);
-//             res.status(200).json({
-//                 data: result.rows,
-//                 success: true
-//             });
-//         } else {
-//             console.error(err.message);
-//             res.status(500).send('Internal Server Error'); // Sending an error response
-//         }
-//     });
-// });
+// view engine setup    
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/index', indexRouter);
-app.use('/users', usersRouter);
-
-let PORT = 3001;
+// app.use('/index', indexRouter);
+// app.use('/users', usersRouter);
+app.use('/transactions', transactionsRouter);
+app.use('/register', registerRouter );
+app.post('/login', (req, res) => {
+    console.log('hello');
+    res.send('hello');
+});
+const PORT = 3001;
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
-
-
