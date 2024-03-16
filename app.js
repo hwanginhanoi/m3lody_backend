@@ -13,7 +13,10 @@ app.use(cors());
 
 app.use(session({
     secret: 'secret',
-    cookie: false,
+    cookie: {
+        maxAge: 60000,
+        name: 'my.session'
+    },//1 minute
     saveUninitialized: false,
     resave: false
 
@@ -35,8 +38,27 @@ app.use('/transactions', transactionsRouter);
 app.use('/register', registerRouter );
 app.post('/login', (req, res) => {
     console.log(req.sessionID);
-    res.send('hello')
-    console.log('hello');
+    const {password} = req.body;
+    if (password){
+        if (req.session.authenticated){
+            res.json(req.session);
+        }else
+        {
+            if (password === '123'){
+                req.session.authenticated = true;
+                req.session.user = {
+                    password : password
+                }
+                res.json(req.session);
+            }else{
+                res.status(403).json({msg: 'wrong password'});
+            }
+        }
+    }
+    else{
+        res.status(400).json({msg: 'password is required'});
+    
+    }
 });
 const PORT = 3001;
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
