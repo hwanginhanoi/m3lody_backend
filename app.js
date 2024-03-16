@@ -6,17 +6,15 @@ import logger from 'morgan';
 // import usersRouter from './routes/users';
 import transactionsRouter from './routes/transactions.js';
 import registerRouter from './routes/register.js';
+import loginRouter from './routes/login.js';
 import cors from 'cors';
 import session from 'express-session';
 const app = express();
-app.use(cors());
+app.use(cors({origin: ['http://192.168.1.117:3000', 'http://localhost:5173'],credentials: true }));
 
 app.use(session({
     secret: 'secret',
-    cookie: {
-        maxAge: 60000,
-        name: 'my.session'
-    },//1 minute
+    cookie: {maxAge: 2592000000}, // 30 days in ms
     saveUninitialized: false,
     resave: false
 
@@ -36,28 +34,19 @@ app.use(express.urlencoded({ extended: false }));
 // app.use('/users', usersRouter);
 app.use('/transactions', transactionsRouter);
 app.use('/register', registerRouter );
-app.post('/login', (req, res) => {
-    console.log(req.sessionID);
-    const {password} = req.body;
-    if (password){
-        if (req.session.authenticated){
-            res.json(req.session);
-        }else
-        {
-            if (password === '123'){
-                req.session.authenticated = true;
-                req.session.user = {
-                    password : password
-                }
-                res.json(req.session);
-            }else{
-                res.status(403).json({msg: 'wrong password'});
-            }
-        }
-    }
-    else{
-        res.status(400).json({msg: 'password is required'});
-    
+app.use('/login', loginRouter);
+
+
+app.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.json({msg: 'logout success'});
+});
+
+app.get('/check', (req, res) => {
+    if (req.session.authenticated){
+        res.json(req.session);
+    }else{
+        res.status(403).json({msg: 'forbidden'});
     }
 });
 const PORT = 3001;
