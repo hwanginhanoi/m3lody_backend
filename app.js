@@ -39,7 +39,9 @@ app.use('/login', loginRouter);
 
 app.post('/logout', (req, res) => {
     req.session.destroy();
+    console.log('logout success');
     res.json({msg: 'logout success'});
+    
 });
 
 app.get('/check', (req, res) => {
