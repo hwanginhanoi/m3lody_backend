@@ -7,6 +7,8 @@ import logger from 'morgan';
 import transactionsRouter from './routes/transactions.js';
 import registerRouter from './routes/register.js';
 import loginRouter from './routes/login.js';
+import accountRouter from './routes/account.js';
+import walletRouter from './routes/wallet.js';
 import cors from 'cors';
 import session from 'express-session';
 const app = express();
@@ -14,7 +16,10 @@ app.use(cors({origin: ['http://192.168.1.117:3000', 'http://localhost:5173'],cre
 
 app.use(session({
     secret: 'secret',
-    cookie: {maxAge: 2592000000}, // 30 days in ms
+    cookie: {
+        maxAge: 2592000000,
+        httpOnly: false,
+    }, // 30 days in ms
     saveUninitialized: false,
     resave: false
 
@@ -30,16 +35,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
-// app.use('/index', indexRouter);
-// app.use('/users', usersRouter);
 app.use('/transactions', transactionsRouter);
 app.use('/register', registerRouter );
 app.use('/login', loginRouter);
+app.use('/account', accountRouter);
+app.use('/wallet', walletRouter);
+
 
 
 app.post('/logout', (req, res) => {
     req.session.destroy();
     console.log('logout success');
+    res.clearCookie('connect.sid');
     res.json({msg: 'logout success'});
     
 });

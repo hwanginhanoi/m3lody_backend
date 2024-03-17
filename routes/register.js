@@ -12,13 +12,11 @@ router.post("/", (req, res) => {
         });
     }
     let uuid = generateUUID();  
-    let email = req.body.email;
-    let password = req.body.password;
+    let {email, password} = req.body;
     console.log(email, password, uuid);
-    res.send("register");
-    // let query =
-    //     `Insert INTO users (user_id ,username, password, email, phone_num, description, address, language, avatar_url) VALUES (${uuid}, '${email}', 'hihi', 'khanh@gmail.com', '', '', '', '', '');`;
-    // register(req, res, query);
+    let query =
+        `Insert INTO users (user_id ,username, password, email, phone_num, description, address, language, avatar_url) VALUES ('900', '', '${password}', '${email}', '', '', '', '', '');`;
+    register(req, res, query);
 });
 
 export default router;
