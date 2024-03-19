@@ -4,8 +4,11 @@ import { profile, nftquery } from "../controllers/profile.js";
 const router = express.Router();
 
 router.get("/userprofile", (req, res) => {
-    let user_id = 1;
-    let query = `SELECT username, user_id, datejoined, description, avatar_url FROM users WHERE user_id = ${user_id}; `;
+    let user_id = req.session.user.user_id;
+    let query = `SELECT users.user_id, users.username, users.password, users.email, music.music_id, music.title, music.description, music.tag, music.preview_url, music.owner_id, music.price 
+    FROM users
+    INNER JOIN music ON users.user_id = music.owner_id
+    WHERE music.owner_id = ${user_id};`;
     profile(req, res, query);
 });
 
