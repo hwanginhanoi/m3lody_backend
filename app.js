@@ -10,6 +10,7 @@ import loginRouter from './routes/login.js';
 import accountRouter from './routes/account.js';
 import walletRouter from './routes/wallet.js';
 import profileRouter from './routes/profile.js';
+import createnftRouter from './routes/createnft.js';
 import cors from 'cors';
 import session from 'express-session';
 const app = express();
@@ -42,6 +43,7 @@ app.use('/login', loginRouter);
 app.use('/account', accountRouter);
 app.use('/wallet', walletRouter);
 app.use('/profile', profileRouter);
+app.use('/createnft', createnftRouter);
 
 
 app.post('/logout', (req, res) => {
