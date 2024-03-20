@@ -6,9 +6,17 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "fs": "*"
+  },
+  "devDependencies": {
+    "ethers": "^5.6.8",
+    "hardhat": "^2.9.7",
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@nomiclabs/hardhat-waffle": "^2.0.3"
   }
 }
