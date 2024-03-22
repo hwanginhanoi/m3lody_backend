@@ -36,46 +36,6 @@
         "EtherSender"
       ]
     },
-    "C:\\Users\\ADMIN\\Desktop\\m3lody_backend\\contracts\\NFTMarketplace.sol": {
-      "lastModificationDate": 1711080810186,
-      "contentHash": "f551ee900d831e037a3a100248ba65dd",
-      "sourceName": "contracts/NFTMarketplace.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "hardhat/console.sol",
-        "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        "@openzeppelin/contracts/token/ERC721/ERC721.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "NFTMarketplace"
-      ]
-    },
     "C:\\Users\\ADMIN\\Desktop\\m3lody_backend\\node_modules\\hardhat\\console.sol": {
       "lastModificationDate": 1711080895268,
       "contentHash": "896f68942c3a20e9ae3c3c5bfd3add54",

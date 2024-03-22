@@ -1,21 +1,27 @@
-import { ethers } from "ethers";
+const { ethers } = require("hardhat");
+const hre = require("hardhat");
+const fs = require("fs");
 
 async function main() {
-    const contract = require("../artifacts/contracts/migrate.sol/EtherSender.json");
-    let url = "http://localhost:8545";
-    let provider = new ethers.providers.JsonRpcProvider(url);
-    const privateKey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
-    const wallet = new ethers.Wallet(privateKey, provider);
-    const account = wallet.connect(provider);
-    const contractFactory = new ethers.ContractFactory(contract.abi, contract.bytecode, account);
-    const contractDeploy = await contractFactory.deploy();
-    await contractDeploy.deployed();
-    console.log("Contract deployed to:", contractDeploy.address);
+  const [deployer] = await ethers.getSigners();
+  const balance = await deployer.getBalance();
+  const Marketplace = await hre.ethers.getContractFactory("NFTMarketplace");
+  const marketplace = await Marketplace.deploy();
+
+  await marketplace.deployed();
+
+  const data = {
+    address: marketplace.address,
+    abi: JSON.parse(marketplace.interface.format('json'))
+  }
+
+  //This writes the ABI and address to the mktplace.json
+  fs.writeFileSync('./src/Marketplace.json', JSON.stringify(data))
 }
 
 main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
