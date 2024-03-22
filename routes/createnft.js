@@ -1,7 +1,12 @@
 import express from "express";
 import pool from "../db.js";
 import { createnft } from "../controllers/createnft.js";
+import multer from 'multer';
 const router = express.Router();
+const app = express();
+const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/", createnft);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+router.post("/", upload.single('file'),createnft);
 export default router;
