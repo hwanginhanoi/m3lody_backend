@@ -36,6 +36,42 @@
       "artifacts": [
         "EtherSender"
       ]
+    },
+    "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\CreateTransaction.sol": {
+      "lastModificationDate": 1711217821738,
+      "contentHash": "f43cc087c915e2b2f11608a707a9993e",
+      "sourceName": "contracts/CreateTransaction.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ProductPurchase"
+      ]
     }
   }
 }
