@@ -12,6 +12,7 @@ import walletRouter from './routes/wallet.js';
 import profileRouter from './routes/profile.js';
 import createnftRouter from './routes/createnft.js';
 import marketRouter from './routes/marketplace.js';
+import dashboardRouter from './routes/dashboard.js';
 import cors from 'cors';
 import session from 'express-session';
 const app = express();
@@ -46,6 +47,7 @@ app.use('/wallet', walletRouter);
 app.use('/profile', profileRouter);
 app.use('/createnft', createnftRouter);
 app.use('/marketplace', marketRouter);
+app.use('/dashboard', dashboardRouter);
 
 
 app.post('/logout', (req, res) => {
