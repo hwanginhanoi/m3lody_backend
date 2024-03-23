@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/userprofile", (req, res) => {
     let user_id = req.session.user.user_id;
-    let query = `SELECT users.user_id, users.username, users.password, users.email, music.music_id, music.title, music.description, music.tag, music.preview_url, music.owner_id, music.price 
+    let query = `SELECT users.user_id, users.username, users.password, users.email, music.music_id, music.title, music.description, music.tag, music.music_url, music.owner_id, music.price 
     FROM users
     INNER JOIN music ON users.user_id = music.owner_id
     WHERE music.owner_id = ${user_id};`;
