@@ -24,7 +24,6 @@ export function profile(req, res, query) {
 export function nftquery(req, res, query) {
     pool.query(query, (err, result) => {
         if (!err) {
-            console.log(result.rows);
             res.status(200).json({
                 data: result.rows,
                 success: true
