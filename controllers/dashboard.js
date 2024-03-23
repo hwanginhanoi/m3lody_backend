@@ -8,7 +8,6 @@ app.use(express.json());
 export function queryRandomNFT(req, res, query){
     pool.query(query, (err, result) => {
         if (!err) {
-            console.log(result.rows);
             res.status(200).json({
                 data: result.rows,
                 success: true

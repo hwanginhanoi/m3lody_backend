@@ -9,6 +9,8 @@ router.get("/userprofile", (req, res) => {
     FROM users
     INNER JOIN music ON users.user_id = music.owner_id
     WHERE music.owner_id = ${user_id};`;
+    let query2 = `SELECT * FROM users WHERE user_id = ${user_id}; `;
+    
     profile(req, res, query);
 });
 

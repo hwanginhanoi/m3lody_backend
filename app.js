@@ -9,10 +9,11 @@ import registerRouter from './routes/register.js';
 import loginRouter from './routes/login.js';
 import accountRouter from './routes/account.js';
 import walletRouter from './routes/wallet.js';
-import profileRouter from './routes/profile.js';
+import profileRouter from './routes/nft.js';
 import createnftRouter from './routes/createnft.js';
 import marketRouter from './routes/marketplace.js';
 import dashboardRouter from './routes/dashboard.js';
+import updateAccountRouter from './routes/updateaccount.js';
 import cors from 'cors';
 import session from 'express-session';
 const app = express();
@@ -48,6 +49,7 @@ app.use('/profile', profileRouter);
 app.use('/createnft', createnftRouter);
 app.use('/marketplace', marketRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/updateaccount', updateAccountRouter);
 
 
 app.post('/logout', (req, res) => {
