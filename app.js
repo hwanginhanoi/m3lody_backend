@@ -9,7 +9,7 @@ import registerRouter from './routes/register.js';
 import loginRouter from './routes/login.js';
 import accountRouter from './routes/account.js';
 import walletRouter from './routes/wallet.js';
-import testRouter from './routes/test.js';
+import checkRouter from './routes/check.js';
 import purchaseRouter from './routes/purchase.js';
 import profileRouter from './routes/nft.js';
 import createnftRouter from './routes/createnft.js';
@@ -51,7 +51,7 @@ app.use('/wallet', walletRouter);
 app.use('/createnft', createnftRouter);
 app.use('/purchase', purchaseRouter);
 app.use('/marketplace', marketRouter);
-app.use('/test', testRouter);
+app.use('/check', checkRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/updateAccount', updateAccountRouter);
 

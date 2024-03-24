@@ -167,14 +167,14 @@ const contract = new ethers.Contract(contractAddress, contractABI, provider.getS
 // API Endpoint to add a product
 
 // API Endpoint to purchase a product
-router.post('/purchase', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const { productId, name, author, price, seller } = req.body;
         // Call contract function to add product
-        await contract.addProduct(productId, name, author, ethers.utils.parseEther(price), seller);
+        let tx = await contract.addProduct(productId, name, author, ethers.utils.parseEther(price), seller);
         // Call contract function to purchase product
         await contract.purchaseProduct(productId, { value: ethers.utils.parseEther(price) });
-        res.status(200).json({ success: true, message: 'Product purchased successfully' });
+        res.status(200).json({ success: true, message: 'Product purchased successfully', data: tx.hash });
     } catch (error) {
         console.error('Error purchasing product:', error);
         res.status(500).json({ success: false, message: 'Error purchasing product' });
