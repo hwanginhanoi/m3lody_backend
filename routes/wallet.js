@@ -5,6 +5,8 @@ const router = express.Router();
 import multer from "multer";
 const upload = multer();
 
+
+//get wallet information
 router.get("/walletinfor", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {
@@ -16,7 +18,7 @@ router.get("/walletinfor", (req, res) => {
 
     }
 });
-
+//post wallet information
 router.post("/postwallet", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {
@@ -33,7 +35,7 @@ router.post("/postwallet", (req, res) => {
 
     }
 })
-
+//add wallet 
 router.post("/addwallet", upload.none(), (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {
@@ -46,7 +48,7 @@ router.post("/addwallet", upload.none(), (req, res) => {
         walletinfor(req, res, query);
     }
 });
-
+//update wallet
 router.post("/updatewallet", upload.none(), (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {

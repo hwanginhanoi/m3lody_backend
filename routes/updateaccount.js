@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//update account information
 router.post("/", upload.fields([{name:'image', maxCount: 1}]),async (req, res) => {
     let user_id = req.session.user.user_id;
     let image = req.files['image'][0];
@@ -35,6 +36,8 @@ router.post("/", upload.fields([{name:'image', maxCount: 1}]),async (req, res) =
     }
 });
 
+
+//update security information
 router.post ("/updatesecurity", upload.none(), (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {

@@ -3,6 +3,7 @@ import pool from "../db.js";
 import { querryAllNFT } from "../controllers/marketplace.js";
 const router = express.Router();
 
+//get all nft with random order
 router.get("/", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {

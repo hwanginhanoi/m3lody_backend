@@ -3,6 +3,7 @@ import pool from "../db.js";
 import { profile, nftquery } from "../controllers/profile.js";
 const router = express.Router();
 
+//get user profile
 router.get("/userprofile", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {

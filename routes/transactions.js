@@ -3,7 +3,7 @@ import pool from "../db.js";
 import { getTransactions } from "../controllers/transactions.js";
 
 const router = express.Router();
-
+//get transactions
 router.get("/", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {

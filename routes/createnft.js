@@ -8,5 +8,6 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//create nft
 router.post("/", upload.fields([{ name: 'image', maxCount: 1 }, { name: 'musicFile', maxCount: 1 }]), createnft);
 export default router;

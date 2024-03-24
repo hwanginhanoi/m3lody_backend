@@ -55,7 +55,7 @@ app.use('/check', checkRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/updateAccount', updateAccountRouter);
 
-
+//logout
 app.post('/logout', (req, res) => {
     req.session.destroy();
     console.log('logout success');
@@ -63,7 +63,7 @@ app.post('/logout', (req, res) => {
     res.json({ msg: 'logout success' });
 
 });
-
+//check credentials
 app.post('/check', (req, res) => {
     if (req.session.authenticated){
         res.json({msg: 'authenticated'});

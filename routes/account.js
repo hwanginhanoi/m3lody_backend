@@ -3,6 +3,7 @@ import pool from "../db.js";
 import { profile, nftquery } from "../controllers/profile.js";
 const router = express.Router();
 
+//get account detail
 router.get("/accountdetail", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {
@@ -14,6 +15,7 @@ router.get("/accountdetail", (req, res) => {
     }
 });
 
+//get user own nfts
 router.get("/userownnft", (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {
