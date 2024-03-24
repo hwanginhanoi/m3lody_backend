@@ -6,9 +6,9 @@ const app = express();
 app.use(express.json());
 
 export function login(req, res){
-    const {email, password} = req.body;
-    if (email && password){
-        let query = `SELECT user_id, username, email FROM users WHERE email = '${email}' AND password = '${password}'`;
+    const {username, password} = req.body;
+    if (username && password){
+        let query = `SELECT user_id, username, email FROM users WHERE username = '${username}' AND password = '${password}'`;
         pool.query(query, (err, result) => {
             if (!err) {
                 // If user is found and the password matches

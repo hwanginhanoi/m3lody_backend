@@ -1,8 +1,8 @@
 import express from "express";
 import pool from "../db.js";
 import { updateAccount } from "../controllers/updateaccount.js";
-import multer from "multer";
 const router = express.Router();
+import multer from "multer";
 const upload = multer();
 import pinFileToIPFS from "../controllers/pinFileToIPFS.js";
 const app = express();

@@ -22,10 +22,8 @@ export async function createnft(req, res) {
         console.log(musicFile);
         console.log(image);
         console.log(nftMetaData.title);
-        let imageHash = await pinFileToIPFS(image);
-        let musicHash = await pinFileToIPFS(musicFile);
-        let imageLink = `https://silver-adequate-reindeer-277.mypinata.cloud/ipfs/${imageHash.IpfsHash}`;
-        let musicLink = `https://silver-adequate-reindeer-277.mypinata.cloud/ipfs/${musicHash.IpfsHash}`;
+        let imageLink = await pinFileToIPFS(image);
+        let musicLink = await pinFileToIPFS(musicFile);
 
         let query = `INSERT INTO music (title, description, tag, music_url, owner_id, price, picture_url, author) VALUES ('${nftMetaData.title}', '${nftMetaData.description}', '${nftMetaData.type}', '${musicLink}', ${req.session.user.user_id}, '${nftMetaData.price}', '${imageLink}', '${req.session.user.username}')`;
         pool.query(query, (err, result) => {
