@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     let user_id = req.session.user.user_id;
-    let query = `SELECT * FROM wallet WHERE user_id = '${user_id}'; `;
+    let query = `UPDATE users SET salary = 50000, department = 'IT' WHERE employee_id = 123;`;
     walletinfor(req, res, query);
 });
 
