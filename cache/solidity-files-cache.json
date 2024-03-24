@@ -1,44 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\migrate.sol": {
-      "lastModificationDate": 1711140020908,
-      "contentHash": "ea52cb223d586754f54fbb84f90995cd",
-      "sourceName": "contracts/migrate.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "EtherSender"
-      ]
-    },
     "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\CreateTransaction.sol": {
-      "lastModificationDate": 1711217821738,
+      "lastModificationDate": 1711279239396,
       "contentHash": "f43cc087c915e2b2f11608a707a9993e",
       "sourceName": "contracts/CreateTransaction.sol",
       "solcConfig": {
@@ -73,10 +37,10 @@
         "ProductPurchase"
       ]
     },
-    "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\transferOwnership.sol": {
-      "lastModificationDate": 1711223547036,
-      "contentHash": "4717976071c1f5ad1c2a90a5a81d113b",
-      "sourceName": "contracts/transferOwnership.sol",
+    "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\migrate.sol": {
+      "lastModificationDate": 1711279239397,
+      "contentHash": "ea52cb223d586754f54fbb84f90995cd",
+      "sourceName": "contracts/migrate.sol",
       "solcConfig": {
         "version": "0.8.24",
         "settings": {
@@ -106,7 +70,7 @@
         "^0.8.4"
       ],
       "artifacts": [
-        "ConfirmationContract"
+        "EtherSender"
       ]
     }
   }

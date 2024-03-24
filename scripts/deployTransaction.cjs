@@ -1,7 +1,8 @@
 const hre = require('hardhat');
-
+const ethers = require('ethers');
 async function main() {
     const deployer = await hre.ethers.getSigners();
+
     // Get the ContractFactory and Signers here.
     const ProductPurchase = await hre.ethers.getContractFactory('ProductPurchase');
     const productPurchase = await ProductPurchase.deploy();
