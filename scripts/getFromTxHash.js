@@ -1,13 +1,12 @@
-const { ethers } = require("ethers");
+import { ethers } from "ethers";
 
 // Provider (Ethereum node endpoint)
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
 // Transaction Hash
-const transactionHash = '0x4551b93c3a0ae142ef2d0dc491b53bc518e78b0572f926c8591a99763f641bcf';
 
 // Function to get product purchase details by transaction hash
-async function getProductPurchaseDetailsByTxHash(transactionHash) {
+export async function getPurchase(transactionHash) {
     try {
         // Get transaction receipt to retrieve contract address
         const receipt = await provider.getTransactionReceipt(transactionHash);
@@ -19,7 +18,6 @@ async function getProductPurchaseDetailsByTxHash(transactionHash) {
 
         // Contract ABI (Interface)
         const contractABI = [
-
             {
                 "anonymous": false,
                 "inputs": [
@@ -178,10 +176,16 @@ async function getProductPurchaseDetailsByTxHash(transactionHash) {
         console.log('Author:', result[1]);
         console.log('Price:', ethers.utils.formatEther(result[2]), 'ETH');
         console.log('Seller Address:', result[3]);
+
+
+        return result;
+
     } catch (error) {
         console.error('Error:', error);
+
+        return error;
     }
 }
 
 // Example usage
-getProductPurchaseDetailsByTxHash(transactionHash);
+

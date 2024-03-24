@@ -72,42 +72,6 @@
       "artifacts": [
         "ProductPurchase"
       ]
-    },
-    "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\transferOwnership.sol": {
-      "lastModificationDate": 1711223547036,
-      "contentHash": "4717976071c1f5ad1c2a90a5a81d113b",
-      "sourceName": "contracts/transferOwnership.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "ConfirmationContract"
-      ]
     }
   }
 }

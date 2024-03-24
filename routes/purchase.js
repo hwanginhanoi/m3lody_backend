@@ -1,10 +1,17 @@
-import { ethers } from "ethers";
-// Kết nối đến localhost Hardhat node
+// Import necessary modules
+import express from 'express';
+import ethers from 'ethers';
+
+// Initialize Express app
+const router = express.Router();
+
+
+// Provider (Ethereum node endpoint)
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
-// Contract ABI (Interface)
+// Contract Address and ABI
+const contractAddress = '0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9'; // Replace with your deployed contract address
 const contractABI = [
-
     {
         "anonymous": false,
         "inputs": [
@@ -152,27 +159,39 @@ const contractABI = [
         "stateMutability": "payable",
         "type": "receive"
     }
-]
+]; // Replace with your contract ABI
 
+// Initialize Contract Instance
+const contract = new ethers.Contract(contractAddress, contractABI, provider.getSigner());
 
-// Địa chỉ hợp đồng đã triển khai trên localhost
-const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
+// API Endpoint to add a product
 
-// Khởi tạo một đối tượng hợp đồng
-const contract = new ethers.Contract(contractAddress, contractABI, provider);
-
-// Hàm để lấy thông tin sản phẩm mua hàng
-export async function getProductPurchaseDetails(accountAddress) {
+// API Endpoint to purchase a product
+router.post('/purchase-product', async (req, res) => {
     try {
-        // Gọi hàm trong hợp đồng
-        const result = await contract.getProduct(1);
-        console.log('Tên sản phẩm:', result);
-        console.log('Giá:', result[1]);
+        const { productId, name, author, price, seller } = req.body;
+        // Call contract function to add product
+        await contract.addProduct(productId, name, author, ethers.utils.parseEther(price), seller);
+        // Call contract function to purchase product
+        await contract.purchaseProduct(productId, { value: ethers.utils.parseEther(price) });
+        res.status(200).json({ success: true, message: 'Product purchased successfully' });
     } catch (error) {
-        console.error('Lỗi:', error);
+        console.error('Error purchasing product:', error);
+        res.status(500).json({ success: false, message: 'Error purchasing product' });
     }
-}
+});
 
-// Ví dụ về việc sử dụng
-const buyerAddress = '0xcd8a1c3ba11cf5ecfa6267617243239504a98d90';
-getProductPurchaseDetails(buyerAddress);
+// API Endpoint to get product information
+router.get('/get-product/:productId', async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        // Call contract function to get product information
+        const productInfo = await contract.getProduct(productId);
+        res.status(200).json({ success: true, productInfo: productInfo });
+    } catch (error) {
+        console.error('Error getting product information:', error);
+        res.status(500).json({ success: false, message: 'Error getting product information' });
+    }
+});
+export default router;
+// Start the server
