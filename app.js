@@ -14,6 +14,8 @@ import createnftRouter from './routes/createnft.js';
 import marketRouter from './routes/marketplace.js';
 import dashboardRouter from './routes/dashboard.js';
 import updateAccountRouter from './routes/updateaccount.js';
+import purchaseRouter from './routes/purchase.js';
+import checkRouter from './routes/check.js';
 import cors from 'cors';
 import session from 'express-session';
 import { create } from 'domain';
