@@ -45,7 +45,6 @@ app.use('/register', registerRouter );
 app.use('/login', loginRouter);
 app.use('/account', accountRouter);
 app.use('/wallet', walletRouter);
-app.use('/profile', profileRouter);
 app.use('/createnft', createnftRouter);
 app.use('/marketplace', marketRouter);
 app.use('/dashboard', dashboardRouter);

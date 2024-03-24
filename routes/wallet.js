@@ -9,7 +9,7 @@ router.get("/walletinfor", (req, res) => {
         res.status(401).json({msg: "Unauthorized"});
         return;
     }else{
-        let query = `UPDATE users SET FROM wallet WHERE user_id = '${user_id}'; `;
+        let query = `SELECT * FROM wallet WHERE user_id = '${user_id}'; `;
         walletinfor(req, res, query);
 
     }
