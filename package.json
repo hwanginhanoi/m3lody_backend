@@ -23,7 +23,7 @@
     "ethers": "^5.6.8",
     "hardhat": "^2.9.7",
     "@nomiclabs/hardhat-ethers": "^2.0.6",
-    "@nomiclabs/hardhat-waffle": "^2.0.3"
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "express-session": "^1.18.0",
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
