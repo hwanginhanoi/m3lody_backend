@@ -9,7 +9,6 @@ import registerRouter from './routes/register.js';
 import loginRouter from './routes/login.js';
 import accountRouter from './routes/account.js';
 import walletRouter from './routes/wallet.js';
-import profileRouter from './routes/nft.js';
 import createnftRouter from './routes/createnft.js';
 import marketRouter from './routes/marketplace.js';
 import dashboardRouter from './routes/dashboard.js';
@@ -59,9 +58,9 @@ app.post('/logout', (req, res) => {
     
 });
 
-app.get('/check', (req, res) => {
+app.post('/check', (req, res) => {
     if (req.session.authenticated){
-        res.json(req.session);
+        res.json({msg: 'authenticated'});
     }else{
         res.status(403).json({msg: 'forbidden'});
     }

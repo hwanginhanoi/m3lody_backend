@@ -25,17 +25,5 @@ router.get("/userownnft", (req, res) => {
     }
 });
 
-router.get("/usercreatednft", (req, res) => {
-
-    let user_id = req.session.user.user_id;
-    if (!user_id) {
-        res.status(401).json({ msg: "Unauthorized" });
-        return;
-    }else{
-        let query = `SELECT nft_id, nft_name, nft_description, nft_image, nft_price, nft_owner, nft_creator, nft_datecreated, nft_dateupdated FROM nft WHERE nft_creator = ${user_id}; `;
-        nftquery(req, res, query);
-
-    }
-});
 
 export default router;
