@@ -49,7 +49,7 @@ app.use('/profile', profileRouter);
 app.use('/createnft', createnftRouter);
 app.use('/marketplace', marketRouter);
 app.use('/dashboard', dashboardRouter);
-app.use('/updateaccount', updateAccountRouter);
+app.use('/updateAccount', updateAccountRouter);
 
 
 app.post('/logout', (req, res) => {
