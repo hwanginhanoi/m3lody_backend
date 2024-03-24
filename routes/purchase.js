@@ -10,7 +10,7 @@ const router = express.Router();
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
 // Contract Address and ABI
-const contractAddress = '0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9'; // Replace with your deployed contract address
+const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'; // Replace with your deployed contract address
 const contractABI = [
     {
         "anonymous": false,
@@ -167,7 +167,7 @@ const contract = new ethers.Contract(contractAddress, contractABI, provider.getS
 // API Endpoint to add a product
 
 // API Endpoint to purchase a product
-router.post('/purchase-product', async (req, res) => {
+router.post('/purchase', async (req, res) => {
     try {
         const { productId, name, author, price, seller } = req.body;
         // Call contract function to add product

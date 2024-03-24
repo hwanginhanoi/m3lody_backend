@@ -1,12 +1,13 @@
 const hre = require('hardhat');
-
+const ethers = require('ethers');
 async function main() {
     const deployer = await hre.ethers.getSigners();
+
     // Get the ContractFactory and Signers here.
-    const ProductPurchase = await hre.ethers.getContractFactory('ProductPurchase', deployer);
+    const ProductPurchase = await hre.ethers.getContractFactory('ProductPurchase');
     const productPurchase = await ProductPurchase.deploy();
     await productPurchase.deployed()
-    await productPurchase.addProduct(2, "Item2", "Mr. Thanh", ethers.utils.parseEther("10"), "0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
+    await productPurchase.addProduct(1, "Item2", "Mr. Thanh", ethers.utils.parseEther("10"), "0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
     //await productPurchase.getProduct(1);
     ethToSend = ethers.utils.parseEther("10")
     await productPurchase.purchaseProduct(1, { value: ethToSend });
