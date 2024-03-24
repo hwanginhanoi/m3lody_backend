@@ -74,8 +74,8 @@
       ]
     },
     "C:\\Users\\ntuan\\OneDrive - MSFT\\Swinburne Course\\COS30049\\m3lody_backend\\contracts\\transferOwnership.sol": {
-      "lastModificationDate": 1711222961245,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "lastModificationDate": 1711223547036,
+      "contentHash": "4717976071c1f5ad1c2a90a5a81d113b",
       "sourceName": "contracts/transferOwnership.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -102,8 +102,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "ConfirmationContract"
+      ]
     }
   }
 }
