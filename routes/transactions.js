@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
         res.status(401).json({ msg: "Unauthorized" });
         return;
     } else {
-        let query = "SELECT * FROM transactions";
+        let query = `SELECT * FROM transactions WHERE buyer_id = ${user_id} OR seller_id = ${user_id};`;
         getTransactions(req, res, query);
     }
 });
