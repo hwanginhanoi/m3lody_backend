@@ -74,4 +74,17 @@ router.post("/updatewallet", upload.none(), (req, res) => {
     }
 });
 
+router.post("/updatebalance", upload.none(), (req, res) => {
+    let user_id = req.session.user.user_id;
+    if (!user_id) {
+        res.status(401).json({msg: "Unauthorized"});
+        return;
+    }else{
+        let formdata = req.body;
+        let balance = formdata.balance;
+        let query = `UPDATE wallet SET eth_balance = '${balance}' WHERE user_id = '${user_id}';`;
+        walletinfor(req, res, query);
+    }
+});
+
 export default router;
