@@ -1,7 +1,7 @@
 // Import necessary modules
 import express from 'express';
 import ethers from 'ethers';
-
+import config from 'dotenv';
 // Initialize Express app
 const router = express.Router();
 
@@ -10,7 +10,7 @@ const router = express.Router();
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
 // Contract Address and ABI
-const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'; // Replace with your deployed contract address
+const contractAddress = process.env.CONTRACT_ADDRESS; // Replace with your deployed contract address
 const contractABI = [
     {
         "anonymous": false,
