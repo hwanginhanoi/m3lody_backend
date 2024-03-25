@@ -18,6 +18,18 @@ router.get("/walletinfor", (req, res) => {
 
     }
 });
+
+router.get("/walletinfor/:id", (req, res) => {
+    let sellerID = req.params.id;
+    let user_id = req.session.user.user_id;
+    if (!user_id) {
+        res.status(401).json({msg: "Unauthorized"});
+        return;
+    } else {
+        let query = `SELECT * FROM wallet WHERE user_id = '${sellerID}'; `;
+        walletinfor(req, res, query);
+    }
+});
 //post wallet information
 router.post("/postwallet", (req, res) => {
     let user_id = req.session.user.user_id;
