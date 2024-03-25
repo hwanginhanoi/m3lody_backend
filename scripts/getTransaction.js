@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-// Kết nối đến localhost Hardhat node
+// Connect to localhost Hardhat node
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
 // Contract ABI (Interface)
@@ -155,16 +155,16 @@ const contractABI = [
 ]
 
 
-// Địa chỉ hợp đồng đã triển khai trên localhost
+// Address of deployed contract
 const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
 
-// Khởi tạo một đối tượng hợp đồng
+// Initialize a contract object
 const contract = new ethers.Contract(contractAddress, contractABI, provider);
 
-// Hàm để lấy thông tin sản phẩm mua hàng
+// Get purchase details
 export async function getProductPurchaseDetails(accountAddress) {
     try {
-        // Gọi hàm trong hợp đồng
+        // Call the function inside the smart contract
         const result = await contract.getProduct(1);
         console.log('Tên sản phẩm:', result);
         console.log('Giá:', result[1]);
