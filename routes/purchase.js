@@ -162,16 +162,19 @@ const contractABI = [
 ]; // Replace with your contract ABI
 
 // Initialize Contract Instance
-const contract = new ethers.Contract(contractAddress, contractABI, provider.getSigner());
+
 
 // API Endpoint to add a product
 
 // API Endpoint to purchase a product
 router.post('/', async (req, res) => {
     try {
-        const { productId, name, author, price, seller } = req.body;
+
+        const { buyer, productId, name, author, price, seller } = req.body;
+        const contract = new ethers.Contract(contractAddress, contractABI, provider.getSigner(buyer));
         // Call contract function to add product
         let tx = await contract.addProduct(productId, name, author, ethers.utils.parseEther(price), seller);
+        console.log(seller);
         // Call contract function to purchase product
         await contract.purchaseProduct(productId, { value: ethers.utils.parseEther(price) });
         res.status(200).json({ success: true, message: 'Product purchased successfully', data: tx.hash });

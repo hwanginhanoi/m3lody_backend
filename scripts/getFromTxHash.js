@@ -175,6 +175,7 @@ export async function getPurchase(transactionHash, id) {
         console.log('Author:', result[1]);
         console.log('Price:', ethers.utils.formatEther(result[2]), 'ETH');
         console.log('Seller Address:', result[3]);
+        return result;
     } catch (error) {
         console.error('Error:', error);
     }

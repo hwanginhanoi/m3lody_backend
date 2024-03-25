@@ -65,10 +65,10 @@ app.post('/logout', (req, res) => {
 });
 //check credentials
 app.post('/check', (req, res) => {
-    if (req.session.authenticated){
-        res.json({msg: 'authenticated'});
-    }else{
-        res.status(403).json({msg: 'forbidden'});
+    if (req.session.authenticated) {
+        res.json({ msg: 'authenticated' });
+    } else {
+        res.status(403).json({ msg: 'forbidden' });
     }
 });
 const PORT = 3001;
