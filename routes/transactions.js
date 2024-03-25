@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 });
 
 //post transactions
-router.post("/uptransaction", upload.none(),(req, res) => {
+router.post("/uptransaction", upload.none(), (req, res) => {
     let user_id = req.session.user.user_id;
     if (!user_id) {
         res.status(401).json({ msg: "Unauthorized" });
@@ -32,7 +32,7 @@ router.post("/uptransaction", upload.none(),(req, res) => {
         } else {
             res.status(400).json({ msg: "Bad Request" });
         }
-    }   
+    }
 })
 
 export default router;
