@@ -64,7 +64,7 @@ app.post('/logout', (req, res) => {
 
 });
 //check credentials
-app.post('/check', (req, res) => {
+app.post('/authorize', (req, res) => {
     if (req.session.authenticated) {
         res.json({ msg: 'authenticated' });
     } else {
