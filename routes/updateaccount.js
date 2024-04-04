@@ -21,7 +21,7 @@ router.post("/", upload.fields([{name:'image', maxCount: 1}]),async (req, res) =
     }else{
         let formData = req.body;
         console.log(formData);
-        if (formData.phone_num && formData.email && formData.address && formData.language && (formData.avatar_url)) {
+        if (formData.phone_num && formData.email && formData.address && formData.language) {
             avatar_url = formData.avatar_url;
             if (image) {
                 avatar_url = await pinFileToIPFS(image);
@@ -45,6 +45,7 @@ router.post ("/updatesecurity", upload.none(), (req, res) => {
         return;
     }else{
         let formData = req.body;
+
         let getCurrentPassword = `SELECT password FROM users WHERE user_id = ${user_id};`;
         if (!formData.currentPassword || !formData.newPassword || !formData.confirmPassword) {
             res.status(400).json({msg: "Bad Request"});

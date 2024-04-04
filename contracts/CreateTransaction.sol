@@ -1,7 +1,28 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-contract ProductPurchase {
+contract Ownable {
+    address public owner;
+
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function");
+        _;
+    }
+
+    function transferOwnership(address newOwner) external onlyOwner {
+        require(newOwner != address(0), "Invalid address");
+        emit OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
+    }
+}
+
+contract ProductPurchase is Ownable {
     // Struct to represent a product
     struct Product {
         string name;
@@ -17,7 +38,7 @@ contract ProductPurchase {
     event ProductPurchased(uint256 productId, address buyer, uint256 amountPaid);
 
     // Function to add a product
-    function addProduct(uint256 productId, string memory _name, string memory _author, uint256 _price, address payable _seller) external {
+    function addProduct(uint256 productId, string memory _name, string memory _author, uint256 _price, address payable _seller) external onlyOwner {
         products[productId] = Product({
             name: _name,
             author: _author,
@@ -34,7 +55,6 @@ contract ProductPurchase {
 
         // Transfer Ether to the seller
         product.wallet.transfer(msg.value);
-
         // Emit an event to log the purchase
         emit ProductPurchased(productId, msg.sender, msg.value);
     }
