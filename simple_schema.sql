@@ -1,3 +1,10 @@
+create database cos30049
+    with owner superuser;
+
+create type public.genre as enum ('Anime', 'Classic', 'Angelic', 'Rock');
+
+alter type public.genre owner to superuser;
+
 create table public.users
 (
     user_id     serial
@@ -11,6 +18,9 @@ create table public.users
     language    varchar(255) not null,
     avatar_url  varchar(255) not null
 );
+
+alter table public.users
+    owner to superuser;
 
 create table public.music
 (
@@ -27,6 +37,9 @@ create table public.music
     author      varchar(255)
 );
 
+alter table public.music
+    owner to superuser;
+
 create table public.wallet
 (
     wallet_id      serial
@@ -38,6 +51,9 @@ create table public.wallet
     eth_balance    numeric   default 0                 not null,
     created_at     timestamp default CURRENT_TIMESTAMP not null
 );
+
+alter table public.wallet
+    owner to superuser;
 
 create table public.transactions
 (
@@ -53,6 +69,9 @@ create table public.transactions
     transaction_date timestamp default CURRENT_TIMESTAMP not null
 );
 
+alter table public.transactions
+    owner to superuser;
+
 create table public.likes
 (
     like_id   serial
@@ -63,3 +82,6 @@ create table public.likes
         references public.music,
     timestamp timestamp default CURRENT_TIMESTAMP not null
 );
+
+alter table public.likes
+    owner to superuser;

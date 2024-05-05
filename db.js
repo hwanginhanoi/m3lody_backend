@@ -15,12 +15,12 @@ const {
 
 // Create a new pool instance
 const pool = new Pool({
-    host: "cos30049.cnmmc8wmy9ar.us-east-1.rds.amazonaws.com",
+    host: "localhost",
     user: "superuser",
     password: "1234rewqasdF",
     port: 5432,
-    database: "cos30049",
-    ssl: { rejectUnauthorized: false },
+    database: "superuser",
+    // ssl: { rejectUnauthorized: false },
 });
 
 function pools(query, res) {
